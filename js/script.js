@@ -14,5 +14,5 @@ printMessage("Zagrałem " + computerMove + "! Jeśli Twój ruch to papier, to wy
 
 var playerMove;
 playerMove = "papier";
-printMessage("Zagrałem " + playerMove + "! Jeśli Twój ruch to papier, to wygrywasz!");
+printMessage("Zagrałem " + playerMove + "! Jeśli Twój ruch to nożyce, to wygrywasz!");
 
