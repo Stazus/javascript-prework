@@ -27,3 +27,26 @@ if (randomNumber === 1) {
 
 // Wyświetlenie ruchu komputera
 printMessage('Mój ruch: ' + computerMove);
+
+
+
+// Pobranie wyboru od gracza
+playerInput = prompt('Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce.');
+console.log('Wpisana odpowiedź to: ' + playerInput);
+
+// Logika przypisywania ruchu gracza
+if (playerInput == '1') {
+  playerMove = 'kamień';
+} else if (playerInput == '2') {
+  playerMove = 'papier';
+} else if (playerInput == '3') {
+  playerMove = 'nożyce';
+} else {
+  // Obsługa błędnego wyboru
+  printMessage('Błędny wybór! Założono, że chciałeś wybrać "kamień".');
+  playerMove = 'kamień';
+}
+
+// Wyświetlenie ruchu gracza
+printMessage('Twój ruch: ' + playerMove);
+
