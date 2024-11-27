@@ -8,45 +8,61 @@ function clearMessages(){
 	document.getElementById('messages').innerHTML = '';
 }
 
-var computerMove, randomNumber;
+var argMoveId, argPlayerMove, argComputerMove, computerMove, playerMove, randomNumber, playerInput;
 
-// Wylosowanie liczby od 1 do 3
+/**
+ * Funkcja rozpoznaje ruch na podstawie ID.
+ */
+function getMoveName(argMoveId) {
+  console.log('Wywołano funkcję getMoveName z argumentem: ' + argMoveId);
+  if (argMoveId == 1) {
+    return 'kamień';
+  } else if (argMoveId == 2) {
+    return 'papier';
+  } else if (argMoveId == 3) {
+    return 'nożyce';
+  } else {
+    printMessage('Nie znam ruchu o id ' + argMoveId + '. Zakładam, że chodziło o "kamień".');
+    return 'kamień'; // Zabezpieczenie w razie błędnego ruchu
+  }
+}
+
+/**
+ * Funkcja rozstrzyga wynik gry na podstawie ruchów gracza i komputera.
+ */
+function displayResult(argPlayerMove, argComputerMove) {
+  console.log('Wywołano funkcję displayResults z argumentami: ' + argPlayerMove + ', ' + argComputerMove);
+
+  if (
+    (argPlayerMove == 'papier' && argComputerMove == 'kamień') || // operator logiczny "lub" - sprawdzenie wszystkich przypadków, w których gracz wygrywa; gdyby go nie było, trzeba by było napisać osobne instrukcje if dla każdego warunku
+    (argPlayerMove == 'kamień' && argComputerMove == 'nożyce') || 
+    (argPlayerMove == 'nożyce' && argComputerMove == 'papier')
+  ) {
+    printMessage('Wygrywasz!');
+  } else if (argPlayerMove == argComputerMove) {
+    printMessage('Remis!');
+  } else {
+    printMessage('Przegrywasz :(');
+  }
+
+  printMessage('Zagrałem ' + argComputerMove + ', a Ty ' + argPlayerMove);
+}
+
+// Pobranie ruchu gracza
+playerInput = prompt('Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce.');
+console.log('Wybór ruchu gracza to: ' + playerInput);
+
+// Przypisanie ruchu gracza na podstawie wyboru
+playerMove = getMoveName(playerInput);
+console.log('Ruch gracza to: ' + playerMove);
+
+// Wylosowanie ruchu komputera
 randomNumber = Math.floor(Math.random() * 3 + 1);
 console.log('Wylosowana liczba to: ' + randomNumber);
 
-// Przypisanie ruchu komputera na podstawie wylosowanej liczby
-if (randomNumber === 1) {
-  computerMove = 'kamień';
-} else if (randomNumber === 2) {
-  computerMove = 'papier';
-} else if (randomNumber === 3) {
-  computerMove = 'nożyce';
-} else {
-  computerMove = 'nieznany ruch'; 
-}
+// Przypisanie ruchu komputera na podstawie losowania
+computerMove = getMoveName(randomNumber);
+console.log('Ruch komputera to: ' + computerMove);
 
-// Wyświetlenie ruchu komputera
-printMessage('Mój ruch: ' + computerMove);
-
-
-
-// Pobranie wyboru od gracza
-playerInput = prompt('Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce.');
-console.log('Wpisana odpowiedź to: ' + playerInput);
-
-// Logika przypisywania ruchu gracza
-if (playerInput == '1') {
-  playerMove = 'kamień';
-} else if (playerInput == '2') {
-  playerMove = 'papier';
-} else if (playerInput == '3') {
-  playerMove = 'nożyce';
-} else {
-  // Obsługa błędnego wyboru
-  printMessage('Błędny wybór! Założono, że chciałeś wybrać "kamień".');
-  playerMove = 'kamień';
-}
-
-// Wyświetlenie ruchu gracza
-printMessage('Twój ruch: ' + playerMove);
-
+// Wyświetlenie wyniku gry
+displayResult(playerMove, computerMove);
