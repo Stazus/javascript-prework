@@ -1,14 +1,45 @@
-function printMessage(msg){
-	var div = document.createElement('div');
-	div.innerHTML = msg;
-	document.getElementById('messages').appendChild(div);
+// Deklaracja zmiennych globalnych
+var buttonRock, buttonPaper, buttonScissors, buttonTest;
+var playerMove, computerMove, randomNumber;
+
+/**
+ * Funkcja obsługująca kliknięcie guzika
+ */
+function buttonClicked(argButtonName) {
+  clearMessages();
+  console.log(argButtonName + ' został kliknięty');
+
+  // Pobranie ruchu gracza na podstawie klikniętego przycisku
+  playerMove = argButtonName;
+  console.log('Ruch gracza to: ' + playerMove);
+
+  // Wylosowanie ruchu komputera
+  randomNumber = Math.floor(Math.random() * 3 + 1);
+  console.log('Wylosowana liczba to: ' + randomNumber);
+
+  // Przypisanie ruchu komputera na podstawie losowania
+  computerMove = getMoveName(randomNumber);
+  console.log('Ruch komputera to: ' + computerMove);
+
+  // Wyświetlenie wyniku gry
+  displayResult(playerMove, computerMove);
 }
 
-function clearMessages(){
-	document.getElementById('messages').innerHTML = '';
+/**
+ * Funkcja wyświetlająca wiadomości na ekranie
+ */
+function printMessage(msg) {
+  var div = document.createElement('div');
+  div.innerHTML = msg;
+  document.getElementById('messages').appendChild(div);
 }
 
-var argMoveId, argPlayerMove, argComputerMove, computerMove, playerMove, randomNumber, playerInput;
+/**
+ * Funkcja czyszcząca wiadomości
+ */
+function clearMessages() {
+  document.getElementById('messages').innerHTML = '';
+}
 
 /**
  * Funkcja rozpoznaje ruch na podstawie ID.
@@ -34,7 +65,7 @@ function displayResult(argPlayerMove, argComputerMove) {
   console.log('Wywołano funkcję displayResults z argumentami: ' + argPlayerMove + ', ' + argComputerMove);
 
   if (
-    (argPlayerMove == 'papier' && argComputerMove == 'kamień') || // operator logiczny "lub" - sprawdzenie wszystkich przypadków, w których gracz wygrywa; gdyby go nie było, trzeba by było napisać osobne instrukcje if dla każdego warunku
+    (argPlayerMove == 'papier' && argComputerMove == 'kamień') || 
     (argPlayerMove == 'kamień' && argComputerMove == 'nożyce') || 
     (argPlayerMove == 'nożyce' && argComputerMove == 'papier')
   ) {
@@ -48,21 +79,28 @@ function displayResult(argPlayerMove, argComputerMove) {
   printMessage('Zagrałem ' + argComputerMove + ', a Ty ' + argPlayerMove);
 }
 
-// Pobranie ruchu gracza
-playerInput = prompt('Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce.');
-console.log('Wybór ruchu gracza to: ' + playerInput);
+// Przypisanie przycisków do zmiennych
+buttonRock = document.getElementById('button-rock');
+buttonPaper = document.getElementById('button-paper');
+buttonScissors = document.getElementById('button-scissors');
+buttonTest = document.getElementById('button-test');
 
-// Przypisanie ruchu gracza na podstawie wyboru
-playerMove = getMoveName(playerInput);
-console.log('Ruch gracza to: ' + playerMove);
+// Obsługa kliknięć przycisków
+buttonRock.addEventListener('click', function() {
+  buttonClicked('kamień');
+});
 
-// Wylosowanie ruchu komputera
-randomNumber = Math.floor(Math.random() * 3 + 1);
-console.log('Wylosowana liczba to: ' + randomNumber);
+buttonPaper.addEventListener('click', function() {
+  buttonClicked('papier');
+});
 
-// Przypisanie ruchu komputera na podstawie losowania
-computerMove = getMoveName(randomNumber);
-console.log('Ruch komputera to: ' + computerMove);
+buttonScissors.addEventListener('click', function() {
+  buttonClicked('nożyce');
+});
 
-// Wyświetlenie wyniku gry
-displayResult(playerMove, computerMove);
+// Obsługa guzika TEST
+buttonTest.addEventListener('click', function() {
+  clearMessages();
+  printMessage('Kliknięto guzik TEST! Możesz teraz kontynuować grę.');
+  console.log('Kliknięto guzik TEST.');
+});
