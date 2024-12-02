@@ -2,16 +2,70 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Kamień, papier, nożyce</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kamień, Papier, Nożyce</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f6d365, #fda085);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: #333;
+        }
+        .container {
+            padding: 20px;
+            max-width: 600px;
+            margin: 50px auto;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #2b5876;
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        #buttons {
+            margin-top: 20px;
+        }
+        button {
+            background-color: #2b5876;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #4e4376;
+        }
+        #messages {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #4e4376;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
+        <h1>Kamień, Papier, Nożyce</h1>
+        <p>Witaj w naszej grze! Wybierz swoją broń: kamień, papier lub nożyce i zmierz się z komputerem.</p>
+        <p>Każdy wybór jest losowy. Komputer rzuca wyzwanie – czy pokonasz go swoją strategią?</p>
         <div id="buttons">
             <button id="button-rock">Kamień</button>
             <button id="button-paper">Papier</button>
             <button id="button-scissors">Nożyce</button>
-            <button id="button-test">Test</button> <!-- Do kodu został dodany przycisku button-test, -->
+            <button id="button-test">Test</button>
         </div>
         <div id="messages"></div>
     </div>
