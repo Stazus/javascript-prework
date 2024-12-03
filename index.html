@@ -1,74 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Ustawienie kodowania znaków na UTF-8, aby strona poprawnie obsługiwała polskie znaki -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Tytuł strony wyświetlany na karcie przeglądarki -->
     <title>Kamień, Papier, Nożyce</title>
+    
+    <!-- Meta tag odpowiedzialny za responsywność strony na różnych urządzeniach -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Połączenie z zewnętrznym arkuszem stylów -->
     <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Styl wewnętrzny użyty dla demonstracji (można przenieść do pliku CSS) -->
     <style>
+        /* Ogólne stylowanie ciała strony */
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #f6d365, #fda085);
-            margin: 0;
+            font-family: Arial, sans-serif; /* Ustawienie czcionki */
+            background: linear-gradient(135deg, #f6d365, #fda085); /* Gradient tła */
+            margin: 0; /* Wyłączenie domyślnych marginesów */
             padding: 0;
-            text-align: center;
-            color: #333;
+            text-align: center; /* Wyrównanie tekstu do środka */
+            color: #333; /* Kolor tekstu */
         }
+
+        /* Styl kontenera z zawartością */
         .container {
-            padding: 20px;
-            max-width: 600px;
-            margin: 50px auto;
-            background: #ffffff;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            padding: 20px; /* Wewnętrzne odstępy */
+            max-width: 600px; /* Maksymalna szerokość */
+            margin: 50px auto; /* Wyśrodkowanie */
+            background: #ffffff; /* Białe tło */
+            border-radius: 15px; /* Zaokrąglone rogi */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Cień dla efektu 3D */
         }
+
+        /* Styl głównego nagłówka */
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            color: #2b5876;
+            font-size: 2.5em; /* Rozmiar czcionki */
+            margin-bottom: 10px; /* Odstęp poniżej nagłówka */
+            color: #2b5876; /* Kolor nagłówka */
         }
+
+        /* Styl paragrafów */
         p {
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin-bottom: 20px;
+            font-size: 1.2em; /* Rozmiar tekstu */
+            line-height: 1.6; /* Wysokość linii tekstu */
+            margin-bottom: 20px; /* Odstęp poniżej paragrafu */
         }
+
+        /* Sekcja z przyciskami */
         #buttons {
-            margin-top: 20px;
+            margin-top: 20px; /* Odstęp powyżej sekcji */
         }
+
+        /* Styl dla przycisków */
         button {
-            background-color: #2b5876;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1em;
-            margin: 5px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+            background-color: #2b5876; /* Kolor tła */
+            color: #fff; /* Kolor tekstu */
+            border: none; /* Brak obramowania */
+            padding: 10px 20px; /* Wewnętrzne odstępy */
+            font-size: 1em; /* Rozmiar czcionki */
+            margin: 5px; /* Odstęp między przyciskami */
+            cursor: pointer; /* Zmiana kursora na "rękę" */
+            border-radius: 5px; /* Zaokrąglone rogi */
+            transition: background-color 0.3s; /* Animacja zmiany koloru */
         }
+
+        /* Efekt najechania kursorem na przycisk */
         button:hover {
-            background-color: #4e4376;
+            background-color: #4e4376; /* Zmiana koloru tła */
         }
+
+        /* Sekcja wyświetlania wiadomości */
         #messages {
-            margin-top: 20px;
-            font-size: 1.2em;
-            color: #4e4376;
+            margin-top: 20px; /* Odstęp powyżej wiadomości */
+            font-size: 1.2em; /* Rozmiar tekstu */
+            color: #4e4376; /* Kolor wiadomości */
+        }
+
+        /* Sekcja wyświetlania wyniku */
+        #result {
+            margin-top: 20px; /* Odstęp powyżej wyniku */
+            font-size: 1.5em; /* Rozmiar tekstu wyniku */
+            color: #2b5876; /* Kolor wyniku */
         }
     </style>
 </head>
 <body>
+    <!-- Główny kontener na zawartość strony -->
     <div class="container">
+        <!-- Tytuł gry -->
         <h1>Kamień, Papier, Nożyce</h1>
+        
+        <!-- Opis gry oraz instrukcja -->
         <p>Witaj w naszej grze! Wybierz swoją broń: kamień, papier lub nożyce i zmierz się z komputerem.</p>
-        <p>Każdy wybór jest losowy. Komputer rzuca wyzwanie – czy pokonasz go swoją strategią?</p>
+        
+        <!-- Sekcja z przyciskami do wyboru -->
         <div id="buttons">
+            <!-- Przyciski reprezentujące wybory gracza -->
             <button id="button-rock">Kamień</button>
             <button id="button-paper">Papier</button>
             <button id="button-scissors">Nożyce</button>
+            
+            <!-- Guzik testowy do demonstracji funkcji -->
             <button id="button-test">Test</button>
         </div>
+        
+        <!-- Sekcja do wyświetlania wiadomości (np. wyniki rundy) -->
         <div id="messages"></div>
+        
+        <!-- Sekcja do wyświetlania wyniku gry -->
+        <div id="result">0 - 0</div>
     </div>
+
+    <!-- Włączenie plików JavaScript odpowiedzialnych za logikę gry -->
     <script src="js/functions.js"></script>
     <script src="js/script.js"></script>
 </body>

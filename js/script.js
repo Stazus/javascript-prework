@@ -2,6 +2,10 @@
 var buttonRock, buttonPaper, buttonScissors, buttonTest;
 var playerMove, computerMove, randomNumber;
 
+// Liczniki wygranych gracza i komputera
+var playerWins = 0;
+var computerWins = 0;
+
 /**
  * Funkcja obsługująca kliknięcie guzika
  */
@@ -11,18 +15,16 @@ function buttonClicked(argButtonName) {
 
     // Pobranie ruchu gracza na podstawie klikniętego przycisku
     playerMove = argButtonName;
-    console.log('Ruch gracza to: ' + playerMove);
 
     // Wylosowanie ruchu komputera
     randomNumber = Math.floor(Math.random() * 3 + 1);
-    console.log('Wylosowana liczba to: ' + randomNumber);
-
-    // Przypisanie ruchu komputera na podstawie losowania
     computerMove = getMoveName(randomNumber);
-    console.log('Ruch komputera to: ' + computerMove);
 
     // Wyświetlenie wyniku gry
     displayResult(playerMove, computerMove);
+
+    // Aktualizacja wyniku
+    updateResult();
 }
 
 /**
@@ -45,7 +47,6 @@ function clearMessages() {
  * Funkcja rozpoznaje ruch na podstawie ID.
  */
 function getMoveName(argMoveId) {
-    console.log('Wywołano funkcję getMoveName z argumentem: ' + argMoveId);
     if (argMoveId == 1) {
         return 'kamień';
     } else if (argMoveId == 2) {
@@ -53,8 +54,7 @@ function getMoveName(argMoveId) {
     } else if (argMoveId == 3) {
         return 'nożyce';
     } else {
-        printMessage('Nie znam ruchu o id ' + argMoveId + '. Zakładam, że chodziło o "kamień".');
-        return 'kamień'; // Zabezpieczenie w razie błędnego ruchu
+        return 'kamień';
     }
 }
 
@@ -62,21 +62,30 @@ function getMoveName(argMoveId) {
  * Funkcja rozstrzyga wynik gry na podstawie ruchów gracza i komputera.
  */
 function displayResult(argPlayerMove, argComputerMove) {
-    console.log('Wywołano funkcję displayResults z argumentami: ' + argPlayerMove + ', ' + argComputerMove);
-
     if (
         (argPlayerMove == 'papier' && argComputerMove == 'kamień') || 
         (argPlayerMove == 'kamień' && argComputerMove == 'nożyce') || 
         (argPlayerMove == 'nożyce' && argComputerMove == 'papier')
     ) {
         printMessage('Wygrywasz!');
+        playerWins++; // Gracz wygrywa rundę
     } else if (argPlayerMove == argComputerMove) {
         printMessage('Remis!');
     } else {
         printMessage('Przegrywasz :(');
+        computerWins++; // Komputer wygrywa rundę
     }
 
     printMessage('Zagrałem ' + argComputerMove + ', a Ty ' + argPlayerMove);
+}
+
+/**
+ * Funkcja aktualizuje wynik wyświetlany na ekranie.
+ */
+function updateResult() {
+    // Pobranie elementu "result" i aktualizacja jego tekstu
+    var resultElement = document.getElementById('result');
+    resultElement.innerHTML = playerWins + ' - ' + computerWins;
 }
 
 // Przypisanie przycisków do zmiennych
