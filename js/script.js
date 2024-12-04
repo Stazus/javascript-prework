@@ -1,10 +1,22 @@
 // Deklaracja zmiennych globalnych
-var buttonRock, buttonPaper, buttonScissors, buttonTest;
-var playerMove, computerMove, randomNumber;
+// var buttonRock, buttonPaper, buttonScissors, buttonTest;
+// var playerMove, computerMove, randomNumber;
 
-// Liczniki wygranych gracza i komputera
+// Liczniki wygranych gracza i komputera - liczniki są zmiennymi globalnymi (widocznymi jako pierwsze), których wartości są ustawione od razu, zanim zaczniemy manipulować DOM lub przypisywać inne zmienne.
 var playerWins = 0;
 var computerWins = 0;
+
+// Jednoczesna deklaracja zmiennych i przypisanie wartości - przycisków do zmiennych (dzięki temu od razu widać, do czego zmienna służy, a kod staje się łatwiejszy do czytania i utrzymania)
+
+const buttonRock = document.getElementById('button-rock');
+var buttonPaper = document.getElementById('button-paper');
+var buttonScissors = document.getElementById('button-scissors');
+var buttonTest = document.getElementById('button-test');
+
+
+
+
+
 
 /**
  * Funkcja obsługująca kliknięcie guzika
@@ -88,11 +100,12 @@ function updateResult() {
     resultElement.innerHTML = playerWins + ' - ' + computerWins;
 }
 
-// Przypisanie przycisków do zmiennych
-buttonRock = document.getElementById('button-rock');
-buttonPaper = document.getElementById('button-paper');
-buttonScissors = document.getElementById('button-scissors');
-buttonTest = document.getElementById('button-test');
+// Przypisanie przycisków do zmiennych - przeniesione do góry
+
+// buttonRock = document.getElementById('button-rock');
+// buttonPaper = document.getElementById('button-paper');
+// buttonScissors = document.getElementById('button-scissors');
+// buttonTest = document.getElementById('button-test');
 
 // Obsługa kliknięć przycisków
 buttonRock.addEventListener('click', function() {
