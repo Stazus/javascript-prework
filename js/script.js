@@ -9,7 +9,7 @@ var computerWins = 0;
 // Jednoczesna deklaracja zmiennych i przypisanie wartości - przycisków do zmiennych (dzięki temu od razu widać, do czego zmienna służy, a kod staje się łatwiejszy do czytania i utrzymania)
 
 const buttonRock = document.getElementById('button-rock');
-var buttonPaper = document.getElementById('button-paper');
+const buttonPaper = document.getElementById('button-paper');
 var buttonScissors = document.getElementById('button-scissors');
 var buttonTest = document.getElementById('button-test');
 
