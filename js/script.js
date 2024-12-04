@@ -3,8 +3,8 @@
 // var playerMove, computerMove, randomNumber; - deklaracja zmiennych została przeniesiona do funkcji buttonClicked
 
 // Liczniki wygranych gracza i komputera - liczniki są zmiennymi globalnymi (widocznymi jako pierwsze), których wartości są ustawione od razu, zanim zaczniemy manipulować DOM lub przypisywać inne zmienne.
-var playerWins = 0;
-var computerWins = 0;
+let playerWins = 0; //Zamieniono var na let ponieważ zmienne są uzywane do przechowywania stanu liczników gry więc ich wartości mogą się zmieniać
+let computerWins = 0;
 
 // Jednoczesna deklaracja zmiennych i przypisanie wartości - przycisków do zmiennych (dzięki temu od razu widać, do czego zmienna służy, a kod staje się łatwiejszy do czytania i utrzymania)
 
