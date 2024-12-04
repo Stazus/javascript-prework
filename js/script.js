@@ -10,7 +10,7 @@ var computerWins = 0;
 
 const buttonRock = document.getElementById('button-rock');
 const buttonPaper = document.getElementById('button-paper');
-var buttonScissors = document.getElementById('button-scissors');
+const buttonScissors = document.getElementById('button-scissors');
 var buttonTest = document.getElementById('button-test');
 
 
