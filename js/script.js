@@ -1,6 +1,6 @@
 // Deklaracja zmiennych globalnych
 // var buttonRock, buttonPaper, buttonScissors, buttonTest;
-// var playerMove, computerMove, randomNumber;
+// var playerMove, computerMove, randomNumber; - deklaracja zmiennych została przeniesiona do funkcji buttonClicked
 
 // Liczniki wygranych gracza i komputera - liczniki są zmiennymi globalnymi (widocznymi jako pierwsze), których wartości są ustawione od razu, zanim zaczniemy manipulować DOM lub przypisywać inne zmienne.
 var playerWins = 0;
@@ -13,11 +13,6 @@ const buttonPaper = document.getElementById('button-paper');
 const buttonScissors = document.getElementById('button-scissors');
 const buttonTest = document.getElementById('button-test');
 
-
-
-
-
-
 /**
  * Funkcja obsługująca kliknięcie guzika
  */
@@ -26,11 +21,11 @@ function buttonClicked(argButtonName) {
     console.log(argButtonName + ' został kliknięty');
 
     // Pobranie ruchu gracza na podstawie klikniętego przycisku
-    playerMove = argButtonName;
+    const playerMove = argButtonName; //zamiana na const, ponieważ zakres zmiennych powinien być ograniczony do tej funkcji, a ich wartości nie są zmieniane po przypisaniu.
 
     // Wylosowanie ruchu komputera
-    randomNumber = Math.floor(Math.random() * 3 + 1);
-    computerMove = getMoveName(randomNumber);
+    const randomNumber = Math.floor(Math.random() * 3 + 1);
+    const computerMove = getMoveName(randomNumber);
 
     // Wyświetlenie wyniku gry
     displayResult(playerMove, computerMove);
