@@ -1,7 +1,3 @@
-// Deklaracja zmiennych globalnych
-// var buttonRock, buttonPaper, buttonScissors, buttonTest;
-// var playerMove, computerMove, randomNumber; - deklaracja zmiennych została przeniesiona do funkcji buttonClicked
-
 // Liczniki wygranych gracza i komputera - liczniki są zmiennymi globalnymi (widocznymi jako pierwsze), których wartości są ustawione od razu, zanim zaczniemy manipulować DOM lub przypisywać inne zmienne.
 let playerWins = 0; //Zamieniono var na let ponieważ zmienne są uzywane do przechowywania stanu liczników gry więc ich wartości mogą się zmieniać
 let computerWins = 0;
@@ -94,13 +90,6 @@ function updateResult() {
     var resultElement = document.getElementById('result');
     resultElement.innerHTML = playerWins + ' - ' + computerWins;
 }
-
-// Przypisanie przycisków do zmiennych - przeniesione do góry
-
-// buttonRock = document.getElementById('button-rock');
-// buttonPaper = document.getElementById('button-paper');
-// buttonScissors = document.getElementById('button-scissors');
-// buttonTest = document.getElementById('button-test');
 
 // Obsługa kliknięć przycisków
 buttonRock.addEventListener('click', function() {
